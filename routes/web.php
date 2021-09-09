@@ -27,12 +27,9 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->group(function(){
-    
-    Route::group(['middleware' => 'auth'], function(){     
+
+    Route::group(['middleware' => 'auth'], function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
-        // Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
-        // Route::get('/category-create', [CategoryController::class, 'create'])->name('admin.category.create');
-        // Route::post('/category-store', [CategoryController::class, 'update'])->name('admin.category.store');
     });
 
     Route::resource('/category', CategoryController::class, ['as' => 'admin']);
@@ -44,4 +41,3 @@ Route::prefix('admin')->group(function(){
     Route::resource('/user', UserController::class, ['except' => ['show'], 'as' => 'admin']);
 
 });
-    
